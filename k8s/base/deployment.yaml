@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-backtest-technical
+  labels:
+    app: stock-backtest-technical
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-backtest-technical
+  template:
+    metadata:
+      labels:
+        app: stock-backtest-technical
+    spec:
+      containers:
+      - name: stock-backtest-technical
+        image: stock-backtest-technical:latest
+        ports:
+        - containerPort: 8080
