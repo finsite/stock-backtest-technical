@@ -14,14 +14,16 @@ logger = setup_logger(__name__)
 
 
 def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
-    """
-    Validate the incoming raw message against the expected schema.
+    """Validate the incoming raw message against the expected schema.
 
-    Parameters:
+    Parameters
+    ----------
         message (dict[str, Any]): The raw message payload.
 
-    Returns:
+    Returns
+    -------
         ValidatedMessage: A validated message object.
+
     """
     logger.debug("🔍 Validating input message schema...")
     if not validate_message_schema(message):
@@ -31,17 +33,19 @@ def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
 
 
 def simulate_technical_strategy(message: ValidatedMessage) -> dict[str, Any]:
-    """
-    Simulate a technical strategy using the validated message.
+    """Simulate a technical strategy using the validated message.
 
     This is a placeholder. Strategies might include SMA crossovers,
     RSI threshold checks, Bollinger Band analysis, etc.
 
-    Parameters:
+    Parameters
+    ----------
         message (ValidatedMessage): The input message.
 
-    Returns:
+    Returns
+    -------
         dict[str, Any]: Backtest results or signals.
+
     """
     logger.debug("🧠 Simulating technical strategy for symbol: %s", message.get("symbol"))
 
@@ -59,14 +63,16 @@ def simulate_technical_strategy(message: ValidatedMessage) -> dict[str, Any]:
 
 
 def process_message(message: dict[str, Any]) -> dict[str, Any]:
-    """
-    Process an incoming message by validating and applying a technical strategy.
+    """Process an incoming message by validating and applying a technical strategy.
 
-    Parameters:
+    Parameters
+    ----------
         message (dict[str, Any]): The raw message to process.
 
-    Returns:
+    Returns
+    -------
         dict[str, Any]: The processed and enriched message.
+
     """
     validated = validate_input_message(message)
     return simulate_technical_strategy(validated)
